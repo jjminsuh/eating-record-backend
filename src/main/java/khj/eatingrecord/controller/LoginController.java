@@ -28,10 +28,10 @@ public class LoginController {
         LoginResponseDto loginResponseDto = new LoginResponseDto();
 
         if (loginService.isExist(memberDto)) {
-            loginResponseDto.setExist(true);
+            loginResponseDto.setIsExist(true);
         } else {
             loginService.join(memberDto);
-            loginResponseDto.setExist(false);
+            loginResponseDto.setIsExist(false);
         }
         return loginResponseDto;
     }

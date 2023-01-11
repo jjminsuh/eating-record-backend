@@ -1,13 +1,13 @@
 package khj.eatingrecord.dto;
 
 public class LoginResponseDto {
-    private boolean isExist;
+    private Boolean isExist;
 
-    public boolean isExist() {
+    public Boolean getIsExist() {
         return isExist;
     }
 
-    public void setExist(boolean exist) {
-        isExist = exist;
+    public void setIsExist(Boolean isExist) {
+        this.isExist = isExist;
     }
 }

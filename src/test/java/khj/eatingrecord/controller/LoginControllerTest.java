@@ -31,7 +31,7 @@ class LoginControllerTest {
 
         MemberDto memberDto = new MemberDto();
         memberDto.setId("1234abcd");
-        String expectedJson = "{\"exist\":false}";
+        String expectedJson = "{\"isExist\":false}";
 
 
         MvcResult result = mockMvc.perform(post("/login")
