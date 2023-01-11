@@ -1,11 +1,16 @@
 create table member (
-    id varchar(50) primary key,
+    id varchar(60) primary key,
     height smallint,
     gender char(1) check(gender in ('F', 'M')),
     age smallint,
     weight smallint,
     num_meal smallint,
-    goal varchar(4) check(goal in ('INC', 'DEC', 'KEEP')),
+    goal varchar(4) check(goal in ('INC', 'DEC', 'KEEP'))
+)
+
+create table today_record (
+    member_id varchar(60) primary key,
+    date date,
     total_kcal float default 0,
     total_carbohydrate float default 0,
     total_protein float default 0,
@@ -20,12 +25,13 @@ create table member (
     total_Ca float default 0,
     total_Na float default 0,
     total_Fe float default 0,
-    total_Zn float default 0
+    total_Zn float default 0,
+    foreign key (member_id) references member(id) on delete cascade
 )
 
 create table record (
     id serial primary key,
-    member_id varchar(50),
+    member_id varchar(60),
     date date,
     degree varchar(6) check(degree in ('OVER', 'ABOVE', 'PROPER')),
     total_kcal int default 0,
