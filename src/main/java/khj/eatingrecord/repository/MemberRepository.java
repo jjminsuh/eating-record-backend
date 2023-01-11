@@ -1,6 +1,7 @@
 package khj.eatingrecord.repository;
 
 import jakarta.persistence.EntityManager;
+import khj.eatingrecord.dto.MemberDto;
 import khj.eatingrecord.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,9 +18,10 @@ public class MemberRepository {
         this.em = em;
     }
 
-    public Member save(Member member) {
+    public void save(MemberDto memberDto) {
+        Member member = new Member();
+        member.setId(memberDto.getId());
         em.persist(member);
-        return member;
     }
 
     public Optional<Member> findById(String id) {

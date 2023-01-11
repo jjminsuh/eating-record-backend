@@ -1,6 +1,7 @@
 package khj.eatingrecord.service;
 
 import jakarta.transaction.Transactional;
+import khj.eatingrecord.dto.MemberDto;
 import khj.eatingrecord.entity.Member;
 import khj.eatingrecord.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ public class LoginService {
         this.memberRepository = memberRepository;
     }
 
-    public boolean isExist(Member member) {
-        return memberRepository.findById(member.getId()).isEmpty();
+    public boolean isExist(MemberDto memberDto) {
+        return memberRepository.findById(memberDto.getId()).isEmpty();
     }
 
-    public void join(Member member) {
-        memberRepository.save(member);
+    public void join(MemberDto memberDto) {
+        memberRepository.save(memberDto);
     }
 }

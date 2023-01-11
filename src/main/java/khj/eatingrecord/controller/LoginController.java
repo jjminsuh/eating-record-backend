@@ -1,5 +1,6 @@
 package khj.eatingrecord.controller;
 
+import khj.eatingrecord.dto.MemberDto;
 import khj.eatingrecord.entity.Member;
 import khj.eatingrecord.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,11 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public boolean login( @RequestBody Member member) {
-        if (loginService.isExist(member)) {
+    public boolean login(@RequestBody MemberDto memberDto) {
+        if (loginService.isExist(memberDto)) {
             return true;
         } else {
-            loginService.join(member);
+            loginService.join(memberDto);
             return false;
         }
     }
