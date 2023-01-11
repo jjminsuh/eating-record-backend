@@ -19,7 +19,7 @@ public class LoginService {
     }
 
     public boolean isExist(MemberDto memberDto) {
-        return memberRepository.findById(memberDto.getId()).isEmpty();
+        return !memberRepository.findById(memberDto.getId()).isEmpty();
     }
 
     public void join(MemberDto memberDto) {
