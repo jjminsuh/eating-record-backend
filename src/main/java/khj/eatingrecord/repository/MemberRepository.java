@@ -1,7 +1,7 @@
 package khj.eatingrecord.repository;
 
 import jakarta.persistence.EntityManager;
-import khj.eatingrecord.domain.Member;
+import khj.eatingrecord.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

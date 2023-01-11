@@ -1,6 +1,6 @@
 package khj.eatingrecord.controller;
 
-import khj.eatingrecord.domain.Member;
+import khj.eatingrecord.entity.Member;
 import khj.eatingrecord.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

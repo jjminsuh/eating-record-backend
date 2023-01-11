@@ -1,4 +1,4 @@
-package khj.eatingrecord.domain;
+package khj.eatingrecord.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
