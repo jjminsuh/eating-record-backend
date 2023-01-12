@@ -11,23 +11,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-class LoginServiceTest {
+class MemberServiceTest {
 
     @Autowired
     MemberRepository memberRepository;
 
     @Autowired
-    LoginService loginService;
+    MemberService memberService;
 
     @Test
     void joinTest() {
         MemberDto memberDto = new MemberDto();
         memberDto.setId("1234abcd");
 
-        assertThat(loginService.isExist(memberDto)).isEqualTo(false);
+        assertThat(memberService.isExist(memberDto)).isEqualTo(false);
 
-        loginService.join(memberDto);
+        memberService.join(memberDto);
 
-        assertThat(loginService.isExist(memberDto)).isEqualTo(true);
+        assertThat(memberService.isExist(memberDto)).isEqualTo(true);
     }
 }

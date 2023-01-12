@@ -2,7 +2,7 @@ package khj.eatingrecord.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import khj.eatingrecord.dto.MemberDto;
-import khj.eatingrecord.service.LoginService;
+import khj.eatingrecord.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(LoginController.class)
-class LoginControllerTest {
+@WebMvcTest(MemberController.class)
+class MemberControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -24,7 +24,7 @@ class LoginControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private LoginService loginService;
+    private MemberService memberService;
 
     @Test
     void testLogin() throws Exception {
