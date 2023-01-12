@@ -30,7 +30,6 @@ public class LoginController {
         if (loginService.isExist(memberDto)) {
             loginResponseDto.setIsExist(true);
         } else {
-            loginService.join(memberDto);
             loginResponseDto.setIsExist(false);
         }
         return loginResponseDto;
