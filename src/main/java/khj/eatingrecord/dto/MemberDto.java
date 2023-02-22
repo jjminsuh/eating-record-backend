@@ -1,5 +1,9 @@
 package khj.eatingrecord.dto;
 
+import khj.eatingrecord.entity.Member;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+
 public class MemberDto {
 
     private String id;
@@ -9,6 +13,12 @@ public class MemberDto {
     private int weight;
     private int num_meal;
     private String goal;
+
+    public Member toEntity() {
+        ModelMapper modelMapper = new ModelMapper();
+        TypeMap<MemberDto, Member> typeMap = modelMapper.createTypeMap(MemberDto.class, Member.class);
+        return modelMapper.map(this, Member.class);
+    }
 
     public String getId() {
         return id;

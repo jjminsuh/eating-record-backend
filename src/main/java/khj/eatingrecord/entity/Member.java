@@ -2,6 +2,9 @@ package khj.eatingrecord.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import khj.eatingrecord.dto.MemberDto;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 
 @Entity
 public class Member {
@@ -14,6 +17,12 @@ public class Member {
     private int weight;
     private int num_meal;
     private String goal;
+
+    public MemberDto toDto() {
+        ModelMapper modelMapper = new ModelMapper();
+        TypeMap<Member, MemberDto> typeMap = modelMapper.createTypeMap(Member.class, MemberDto.class);
+        return modelMapper.map(this, MemberDto.class);
+    }
 
     public String getId() {
         return id;
