@@ -18,9 +18,13 @@ class MemberRepositoryTest {
     void saveTest() {
         MemberDto memberDto = new MemberDto();
         memberDto.setId("1234abcd");
+        memberDto.setAge(20);
+        memberDto.setGender('F');
 
         memberRepository.save(memberDto);
 
         assertThat(memberRepository.findById(memberDto.getId()).get().getId()).isEqualTo(memberDto.getId());
+        assertThat(memberRepository.findById(memberDto.getId()).get().getAge()).isEqualTo(memberDto.getAge());
+        assertThat(memberRepository.findById(memberDto.getId()).get().getHeight()).isEqualTo(memberDto.getHeight());
     }
 }
