@@ -18,14 +18,15 @@ public class MemberRepository {
         this.em = em;
     }
 
-    public void save(MemberDto memberDto) {
-        Member member = new Member();
-        member.setId(memberDto.getId());
-        em.persist(member);
-    }
-
     public Optional<Member> findById(String id) {
         Member member =  em.find(Member.class, id);
         return Optional.ofNullable(member);
+    }
+
+    public Optional<Member> save(MemberDto memberDto) {
+        Member member = memberDto.toEntity();
+        em.persist(member);
+
+        return findById(member.getId());
     }
 }
