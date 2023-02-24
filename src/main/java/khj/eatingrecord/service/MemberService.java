@@ -21,7 +21,7 @@ public class MemberService {
         return !memberRepository.findById(memberDto.getId()).isEmpty();
     }
 
-    public void join(MemberDto memberDto) {
-        memberRepository.save(memberDto);
+    public MemberDto join(MemberDto memberDto) {
+        return memberRepository.save(memberDto).get().toDto();
     }
 }
