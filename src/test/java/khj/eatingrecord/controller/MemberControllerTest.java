@@ -59,7 +59,7 @@ class MemberControllerTest {
         memberDto.setId("1234abcd");
         memberDto.setAge(20);
 
-        String expectedJson = "{\"id\":\"1234abcd\",\"height\":0,\"gender\":null,\"age\":20,\"weight\":0,\"num_meal\":0,\"goal\":null}";
+        String expectedJson = objectMapper.writeValueAsString(memberDto);
 
         MvcResult result = mockMvc.perform(post("/sign-up")
                         .contentType("application/json")
@@ -70,10 +70,32 @@ class MemberControllerTest {
         String actualJson = result.getResponse().getContentAsString();
 
         assertThat(actualJson).isEqualTo(expectedJson);
+    }
 
-        MemberDto responseDto = objectMapper.readValue(actualJson, MemberDto.class);
+    @Test
+    void profileTest() throws Exception {
+        String id = "1234abcd";
+        int age = 20;
+        char gender = 'M';
 
-        assertThat(responseDto.getId()).isEqualTo(memberDto.getId());
-        assertThat(responseDto.getAge()).isEqualTo(memberDto.getAge());
+        MemberDto memberDto = new MemberDto();
+        memberDto.setId(id);
+        memberDto.setAge(age);
+        memberDto.setGender(gender);
+
+        memberService.join(memberDto);
+
+        String expectedJson = objectMapper.writeValueAsString(memberDto);
+
+
+        MvcResult result = mockMvc.perform(post("/profile")
+                        .contentType("application/json")
+                        .content("{\"id\":\"1234abcd\"}"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String actualJson = result.getResponse().getContentAsString();
+
+        assertThat(actualJson).isEqualTo(expectedJson);
     }
 }
