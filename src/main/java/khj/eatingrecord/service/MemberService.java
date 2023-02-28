@@ -24,4 +24,8 @@ public class MemberService {
     public MemberDto join(MemberDto memberDto) {
         return memberRepository.save(memberDto).get().toDto();
     }
+
+    public MemberDto getMember(String id) {
+        return memberRepository.findById(id).get().toDto();
+    }
 }
