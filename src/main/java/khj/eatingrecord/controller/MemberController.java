@@ -35,7 +35,7 @@ public class MemberController {
 
     @PostMapping(value="/sign-up", produces="application/json")
     @ResponseBody
-    public MemberDto signUp(@RequestBody MemberDto memberDto) throws JsonProcessingException {
+    public MemberDto signUp(@RequestBody MemberDto memberDto) {
         return memberService.join(memberDto);
     }
 }
