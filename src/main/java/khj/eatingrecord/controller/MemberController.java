@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -37,5 +38,11 @@ public class MemberController {
     @ResponseBody
     public MemberDto signUp(@RequestBody MemberDto memberDto) {
         return memberService.join(memberDto);
+    }
+
+    @PostMapping(value="/profile", produces="application/json")
+    @ResponseBody
+    public MemberDto profile(@RequestBody MemberDto memberDto) {
+        return memberService.getMember(memberDto.getId());
     }
 }
