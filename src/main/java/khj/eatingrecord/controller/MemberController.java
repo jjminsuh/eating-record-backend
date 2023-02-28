@@ -1,5 +1,6 @@
 package khj.eatingrecord.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import khj.eatingrecord.dto.LoginResponseDto;
 import khj.eatingrecord.dto.MemberDto;
 import khj.eatingrecord.service.MemberService;
@@ -19,7 +20,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping("/login")
+    @PostMapping(value="/login", produces = "application/json")
     @ResponseBody
     public LoginResponseDto login(@RequestBody MemberDto memberDto) {
         LoginResponseDto loginResponseDto = new LoginResponseDto();
@@ -30,5 +31,11 @@ public class MemberController {
             loginResponseDto.setIsExist(false);
         }
         return loginResponseDto;
+    }
+
+    @PostMapping(value="/sign-up", produces="application/json")
+    @ResponseBody
+    public MemberDto signUp(@RequestBody MemberDto memberDto) throws JsonProcessingException {
+        return memberService.join(memberDto);
     }
 }
