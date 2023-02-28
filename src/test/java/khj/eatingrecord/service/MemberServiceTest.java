@@ -30,4 +30,21 @@ class MemberServiceTest {
 
         assertThat(memberService.isExist(memberDto)).isEqualTo(true);
     }
+
+    @Test
+    void getMemberTest() {
+        String id = "1234abcd";
+        int age = 20;
+        char gender = 'M';
+
+        MemberDto memberDto = new MemberDto();
+        memberDto.setId(id);
+        memberDto.setAge(age);
+        memberDto.setGender(gender);
+
+        memberService.join(memberDto);
+
+        assertThat(memberService.getMember(id).getGender()).isEqualTo(gender);
+        assertThat(memberService.getMember(id).getAge()).isEqualTo(age);
+    }
 }
